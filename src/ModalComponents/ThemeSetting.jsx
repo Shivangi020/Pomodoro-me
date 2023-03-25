@@ -10,7 +10,7 @@ function ThemeSetting() {
 
   return (
     <div className='theme-setting-cn' style={{transform: `translateY(${0-measurement}px)`,transition:'transform .5s ease-in'}}>
-        <p>Select theme color</p>
+        <p>Select theme color :</p>
         <div className='theme-in-cn'>  <input className='theme-in' ></input><span className='down-icon' onClick={()=>setShowList(!showList)}><BiChevronDown /></span></div>
       <ul className={`${showList?'theme-list theme-list-show' :'theme-list '}`}>
        {

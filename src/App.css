@@ -156,17 +156,16 @@ color: var(--dark);
 }
 .sidebar-op li{
   margin-bottom: 15px;
+  padding-left: 10px;
   padding-top: 2px;
   padding-bottom: 2px;
-  border-radius: 8px;
-  background-color: var(--light);
   cursor: pointer;
-  text-align: center;
 }
-.sidebar-op li:active{
-  background-color: var(--light);
-  border-radius: 8px;
 
+.active-btn {
+  border-radius: 8px;
+  background-color: var(--light);
+  width: 120px;
 }
 .setting-wn-cn{
   display: grid;
@@ -181,6 +180,7 @@ color: var(--dark);
  font-size: 1.2em;
 }
 .theme-setting-cn p{
+  margin-top: 0;
   margin-bottom: 2px;
 }
 .timer-setting-cn{
@@ -190,7 +190,7 @@ color: var(--dark);
   justify-content: space-around;
 }
 .timer-setting-cn p{
-  margin-top: 0;
+  margin-top: 30px;
   margin-bottom: 0;
   letter-spacing: 1px;
   font-size: 1.2em;
