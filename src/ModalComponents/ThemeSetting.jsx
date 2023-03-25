@@ -6,7 +6,7 @@ import { Themes } from '../Theme'
 function ThemeSetting() {
     const [showList ,setShowList] = useState(false)
   return (
-    <div className='theme-setting-cn'>
+    <div className='theme-setting-cn' style={{transform: "translateY(0)"}}>
         <p>Select theme color</p>
         <div className='theme-in-cn'>  <input className='theme-in' ></input><span className='down-icon' onClick={()=>setShowList(!showList)}><BiChevronDown /></span></div>
       <ul className={`${showList?'theme-list theme-list-show' :'theme-list '}`}>
