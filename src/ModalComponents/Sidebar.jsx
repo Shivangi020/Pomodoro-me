@@ -2,7 +2,13 @@ import React from 'react'
 
 function Sidebar() {
   return (
-    <div className='sidebar-cn'>Sidebar</div>
+    <div className='sidebar-cn'>
+  
+       <ul className='sidebar-op'>
+        <li>Themes</li>
+        <li>Timers</li>
+       </ul>
+    </div>
   )
 }
 

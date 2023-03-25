@@ -11,16 +11,15 @@ const initialState = {
   },
 
   theme: {
-    color: "#245953",
-    background_color: "#408E91",
-    color2: "#ffffff",
+    dark: "#245953",
+    light: "#408E91",
   },
 };
 
 // MODAL Initial state --->
 const modalInitialState = {
   showModal: {
-    isModalOpen: false,
+    isModalOpen: true,
   },
 };
 

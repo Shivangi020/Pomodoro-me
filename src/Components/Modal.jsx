@@ -4,6 +4,7 @@ import Sidebar from "../ModalComponents/Sidebar";
 import SettingWindow from "../ModalComponents/SettingWindow";
 import { createPortal } from "react-dom";
 import { ModalContext } from "../Context/GlobalState";
+import SaveButton from "../ModalComponents/SaveButton";
 
 function Modal() {
   const { showModal } = useContext(ModalContext);
@@ -19,6 +20,7 @@ function Modal() {
             <Sidebar />
             <SettingWindow />
           </div>
+          <SaveButton/>
         </div>
       </div>,
       document.body

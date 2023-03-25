@@ -8,7 +8,7 @@ const ModalReducer = (modalState, action) => {
       return {
         ...modalState,
         showModal: { ...showModal, isModalOpen: true },
-      };
+    };
     default:
       return modalState;
   }

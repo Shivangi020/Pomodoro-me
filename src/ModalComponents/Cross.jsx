@@ -8,7 +8,8 @@ function Cross() {
 
   return (
     <div className='cross-cn' >
-      <VscChromeClose onClick={()=> closeModal()}/>
+      <p>Settings</p>
+      <VscChromeClose onClick={()=> closeModal()} className='cross-icon'/>
     </div>
   )
 }

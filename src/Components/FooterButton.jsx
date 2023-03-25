@@ -6,6 +6,12 @@ import { ModalContext } from '../Context/GlobalState'
 function FooterButton() {
   const {openModal} = useContext(ModalContext)
 
+  const changeColor = ()=>{
+    const root = document.documentElement;
+    root.style.setProperty('--dark', '#F40552');
+    root.style.setProperty('--light', '#6886C5');
+  }
+  
   return (
     <div className='footer-button'>
     <ActionButton tag='Start'/>
