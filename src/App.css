@@ -177,7 +177,6 @@ color: var(--dark);
   overflow: hidden;
 }
 .theme-setting-cn{
- /* transform: translateY(-200px); */
  letter-spacing: 1px;
  font-size: 1.2em;
 }
@@ -186,7 +185,6 @@ color: var(--dark);
 }
 .timer-setting-cn{
   height: 194px;
-  /* transform: translateY(-200px); */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -218,6 +216,7 @@ font-weight: 400;
   font-size: 1.2em;
   font-weight: 600;
   color: var(--light);
+  
 }
 
 .cross-icon{

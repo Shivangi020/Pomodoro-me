@@ -1,5 +1,5 @@
 const ModalReducer = (modalState, action) => {
-  const { showModal } = modalState;
+  const { showModal,translateVar } = modalState;
 
   switch (action.type) {
     case "CLOSE":
@@ -9,6 +9,11 @@ const ModalReducer = (modalState, action) => {
         ...modalState,
         showModal: { ...showModal, isModalOpen: true },
     };
+    case "TRANSLATE":
+      return {
+        ...modalState,
+           translateVar:{...translateVar ,measurement:action.payload}
+      }
     default:
       return modalState;
   }

@@ -21,6 +21,9 @@ const modalInitialState = {
   showModal: {
     isModalOpen: true,
   },
+  translateVar:{
+    measurement  :0
+  }
 };
 
 // Creating Global Context
@@ -41,10 +44,13 @@ const GlobalProvider = ({ children }) => {
   const openModal = () => {
     modalDispatch({ type: "OPEN" });
   };
+  const translateAction = (msr)=>{
+        modalDispatch({type:'TRANSLATE' ,payload:msr})
+  };
 
   return (
     <ModalContext.Provider
-      value={{ showModal: modalState.showModal, closeModal, openModal }}
+      value={{ showModal: modalState.showModal ,translateVar:modalState.translateVar, closeModal, openModal ,translateAction}}
     >
       <GlobalContext.Provider
         value={{ timer: state.timer, theme: state.theme }}

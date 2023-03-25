@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ModalContext } from "../Context/GlobalState";
 
 function TimerSetting() {
+  const {translateVar} = useContext(ModalContext)
+  const {measurement} = translateVar
   
   return (
-  <div className="timer-setting-cn" style={{ transform: 'translateY(200px)'}}>
+  <div className="timer-setting-cn" style={{ transform: `translateY(${200-measurement}px)` ,transition:'transform .5s ease-in'}}>
         <p>Set Time</p>
       <div className="timer-in">
         <label>Pomodoro :</label>
