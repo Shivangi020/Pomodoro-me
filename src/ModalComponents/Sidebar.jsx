@@ -6,6 +6,7 @@ import { SettingOption } from '../SettingOption'
 function Sidebar() {
   const {translateAction} = useContext(ModalContext)
   const [option ,setOption] = useState(SettingOption)
+  
   const OptionClickHandler = (translateMsr,tag)=>{
     console.log(translateMsr,tag)
          const activeOption = option.map((item)=>{

@@ -16,7 +16,7 @@ const initialState = {
   },
 };
 
-// MODAL Initial state --->
+// MODAL INITIAL STATE --->
 const modalInitialState = {
   showModal: {
     isModalOpen: false,

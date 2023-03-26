@@ -14,7 +14,7 @@ function Main() {
       const root = document.documentElement;
       root.style.setProperty('--dark', dark);
       root.style.setProperty('--light', light);
-    },[theme.dark,theme.light])
+    },[dark,light])
   
   return (
     <div className="main">

@@ -4,6 +4,7 @@ const ModalReducer = (modalState, action) => {
   switch (action.type) {
     case "CLOSE":
       return { ...modalState, showModal: { ...showModal, isModalOpen: false } };
+    
     case "OPEN":
       return {
         ...modalState,

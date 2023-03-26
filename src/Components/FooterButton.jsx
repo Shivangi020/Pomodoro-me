@@ -1,8 +1,8 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext} from 'react'
 import ActionButton from './Button'
 import {AiFillSetting} from 'react-icons/ai'
-import { ModalContext,GlobalContext } from '../Context/GlobalState'
-import { Themes } from '../Theme'
+import { ModalContext } from '../Context/GlobalState'
+
 
 function FooterButton() {
   const {openModal} = useContext(ModalContext)
