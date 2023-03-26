@@ -13,7 +13,7 @@ export const  Themes = [
        },
        {
          index:2,
-         name:'Summer',
+         name:'Rainbow',
          dark:'#F40552',
          light:'#6886C5'
        },
@@ -35,5 +35,11 @@ export const  Themes = [
         name:'Fall',
         dark:'#8F1D14',
         light:'#BBB'
+       },
+       {
+         index:6,
+        name:'Summer',
+        dark:'#D92027',
+        light:'#FFD271'
        }
 ]

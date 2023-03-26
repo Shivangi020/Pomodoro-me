@@ -1,17 +1,18 @@
-import {StartTimer,setTime} from "./Functions"
 
-const AppReducer = (state , action) =>{
-    const {timer} = state
-    switch(action.type){
-        case 'START' :
-            let {hours,minutes} =  StartTimer(timer.pomodoro.min)
-            return {...state , timer:{...state.timer ,pomodoro:{...timer.pomodoro,min :minutes , hour:hours }}}
-        case 'CHANGE_THEME' :
-            let {dark,light} = action.payload
-            return{...state , theme:{...state.theme , dark:dark ,light:light}}
-        default :
-        return {...state}
-    }
-}
 
-export default AppReducer
+const AppReducer = (state, action) => {
+  switch (action.type) {
+    case "SAVE_CHANGE":
+      let { dark, light } = action.payload.theme;
+      let { pomodoro, short_break, long_break } = action.payload.timer;
+      return {
+        ...state,
+        theme: { ...state.theme, dark: dark, light: light },
+        timer: { ...state.timer, pomodoro, short_break, long_break },
+      };
+    default:
+      return { ...state };
+  }
+};
+
+export default AppReducer;

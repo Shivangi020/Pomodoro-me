@@ -5,7 +5,7 @@ import ModalReducer from "./ModalReducer";
 // INITIAL STATE --->
 const initialState = {
   timer: {
-    pomodoro: { min: 120, hour: 0, second: 0 },
+    pomodoro: 25,
     long_break: 15,
     short_break: 5,
   },
@@ -49,10 +49,12 @@ const GlobalProvider = ({ children }) => {
   };
 
   // ACTIONS FOR POMODORO INPUTS --->
-  
-  const saveChange = (theme)=>{
-    dispatch({type:'CHANGE_THEME' ,payload:theme})
+  const saveChange = (theme,timer)=>{
+    dispatch({type:'SAVE_CHANGE' ,payload:{theme,timer}})
   }
+
+
+  
   return (
     <ModalContext.Provider
       value={{ showModal: modalState.showModal ,translateVar:modalState.translateVar, closeModal, openModal ,translateAction}}

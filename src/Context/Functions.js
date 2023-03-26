@@ -6,8 +6,7 @@ const setTime = (totalMinutes) =>{
     }else{
         hours = Math.floor(totalMinutes / 60); 
         minutes = totalMinutes % 60;
-    }
-    
+    } 
     return ({hours , minutes})
 }
 

@@ -27,7 +27,30 @@ function Modal() {
   const themeSelectHandler = (index)=>{
          setThemeSelect(index)
   }
-
+  
+  const pomodorTimeHandler = (e) =>{
+    if(e.target.value<=120){
+      setTimeSelect({...timeSelect,pomodoro:e.target.value})
+    }else{
+      alert('Maximun time limit for pomodoro is 120 minutes')
+    }
+  }
+  const shortTimeHandler = (e) =>{
+    if(e.target.value<=15){
+      setTimeSelect({...timeSelect,short_break:e.target.value})
+    }else{
+      alert('Maximun time limit for short break is 15 minutes')
+    }
+   
+  }
+  const longTimeHandler = (e) =>{
+    if(e.target.value<=30){
+      setTimeSelect({...timeSelect,long_break:e.target.value})
+    }else{
+      alert('Maximun time limit for long break is 30 minutes')
+    }
+    
+  }
 
   if (showModal.isModalOpen === false) {
     return null;
@@ -35,13 +58,13 @@ function Modal() {
     return createPortal(
       <div className="modal-main">
         <div
-          className='modal-window ' style={{transform:`translateY(${-600+translate}px)` ,transition:'transform .5s ease-out'}}>
+          className='modal-window ' style={{transform:`translateY(${-600+translate}px)` ,transition:'transform .3s ease-out'}}>
           <Cross />
           <div className="modal-cn">
             <Sidebar />
-            <SettingWindow actionState = {{themeSelect,setThemeSelect,themeSelectHandler}}/>
+            <SettingWindow actionState = {{themeSelectHandler,pomodorTimeHandler,shortTimeHandler,longTimeHandler,timeSelect}}/>
           </div>
-          <SaveButton actionState = {{themeSelect}} />
+          <SaveButton actionState = {{themeSelect,timeSelect}} />
         </div>
       </div>,
       document.body
