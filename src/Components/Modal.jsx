@@ -9,6 +9,12 @@ import SaveButton from "../ModalComponents/SaveButton";
 function Modal() {
   const { showModal } = useContext(ModalContext);
   const [translate,setTranslate] = useState(0)
+  const [themeSelect ,setThemeSelect] = useState(0)
+  const [timeSelect ,setTimeSelect] = useState({
+    pomodoro:25,
+    long_break:15,
+    short_break:5
+  })
 
   useEffect(()=>{
     if(showModal.isModalOpen){
@@ -16,22 +22,26 @@ function Modal() {
     }else{
       setTranslate(0)
     }
-
   },[showModal.isModalOpen])
   
+  const themeSelectHandler = (index)=>{
+         setThemeSelect(index)
+  }
+
+
   if (showModal.isModalOpen === false) {
     return null;
   } else {
     return createPortal(
       <div className="modal-main">
         <div
-          className='modal-window' style={{transform:`translateY(${-600+translate}px)` ,transition:'transform .5s ease-in'}}>
+          className='modal-window ' style={{transform:`translateY(${-600+translate}px)` ,transition:'transform .5s ease-out'}}>
           <Cross />
           <div className="modal-cn">
             <Sidebar />
-            <SettingWindow />
+            <SettingWindow actionState = {{themeSelect,setThemeSelect,themeSelectHandler}}/>
           </div>
-          <SaveButton />
+          <SaveButton actionState = {{themeSelect}} />
         </div>
       </div>,
       document.body

@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import ThemeSetting from './ThemeSetting'
 import TimerSetting from './TimerSetting'
 
-function SettingWindow() {
+function SettingWindow({actionState}) {
+  const {themeSelectHandler} = actionState
+ 
   return (
     <div className="setting-wn-cn">
-      <ThemeSetting/>
+      <ThemeSetting themeSelectHandler={themeSelectHandler}/>
       <TimerSetting/>
     </div>
   )

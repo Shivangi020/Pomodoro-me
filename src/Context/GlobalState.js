@@ -49,16 +49,16 @@ const GlobalProvider = ({ children }) => {
   };
 
   // ACTIONS FOR POMODORO INPUTS --->
-  const changeColor = (theme)=>{
-          dispatch({type:'CHANGE_THEME' ,payload:theme})
+  
+  const saveChange = (theme)=>{
+    dispatch({type:'CHANGE_THEME' ,payload:theme})
   }
-
   return (
     <ModalContext.Provider
       value={{ showModal: modalState.showModal ,translateVar:modalState.translateVar, closeModal, openModal ,translateAction}}
     >
       <GlobalContext.Provider
-        value={{ timer: state.timer, theme: state.theme ,changeColor}}
+        value={{ timer: state.timer, theme: state.theme ,saveChange}}
       >
         {children}
       </GlobalContext.Provider>
