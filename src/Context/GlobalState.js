@@ -19,7 +19,7 @@ const initialState = {
 // MODAL Initial state --->
 const modalInitialState = {
   showModal: {
-    isModalOpen: true,
+    isModalOpen: false,
   },
   translateVar:{
     measurement  :0
@@ -37,7 +37,7 @@ const GlobalProvider = ({ children }) => {
     modalInitialState
   );
 
-  //ACTIONS  FOR MODAL --->
+  //ACTIONS FOR MODAL --->
   const closeModal = () => {
     modalDispatch({ type: "CLOSE" });
   };
@@ -48,12 +48,17 @@ const GlobalProvider = ({ children }) => {
         modalDispatch({type:'TRANSLATE' ,payload:msr})
   };
 
+  // ACTIONS FOR POMODORO INPUTS --->
+  const changeColor = (theme)=>{
+          dispatch({type:'CHANGE_THEME' ,payload:theme})
+  }
+
   return (
     <ModalContext.Provider
       value={{ showModal: modalState.showModal ,translateVar:modalState.translateVar, closeModal, openModal ,translateAction}}
     >
       <GlobalContext.Provider
-        value={{ timer: state.timer, theme: state.theme }}
+        value={{ timer: state.timer, theme: state.theme ,changeColor}}
       >
         {children}
       </GlobalContext.Provider>

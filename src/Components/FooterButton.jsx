@@ -1,19 +1,15 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import ActionButton from './Button'
 import {AiFillSetting} from 'react-icons/ai'
-import { ModalContext } from '../Context/GlobalState'
+import { ModalContext,GlobalContext } from '../Context/GlobalState'
+import { Themes } from '../Theme'
 
 function FooterButton() {
   const {openModal} = useContext(ModalContext)
 
-  const changeColor = ()=>{
-    const root = document.documentElement;
-    root.style.setProperty('--dark', '#F40552');
-    root.style.setProperty('--light', '#6886C5');
-  }
-  
+ 
   return (
-    <div className='footer-button'>
+    <div className='footer-button' >
     <ActionButton tag='Start'/>
     <ActionButton tag='Pause'/>
     <ActionButton tag='Reset'/>

@@ -6,8 +6,6 @@ import { SettingOption } from '../SettingOption'
 function Sidebar() {
   const {translateAction} = useContext(ModalContext)
   const [option ,setOption] = useState(SettingOption)
-
-
   const OptionClickHandler = (translateMsr,tag)=>{
     console.log(translateMsr,tag)
          const activeOption = option.map((item)=>{
@@ -16,6 +14,7 @@ function Sidebar() {
          setOption(activeOption)
          translateAction(translateMsr)
   }
+
   return (
     <div className='sidebar-cn'>
        <ul className='sidebar-op'>
@@ -29,5 +28,3 @@ function Sidebar() {
 }
 
 export default Sidebar
-
-// <li onClick={()=>translateAction(translateMsr)} key={tag} >{tag}</li>
