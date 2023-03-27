@@ -9,6 +9,12 @@ const initialState = {
     long_break: 15,
     short_break: 5,
   },
+  
+  start_time:{
+      minutes:25,
+      hours:0,
+      second:0
+  },
 
   theme: {
     dark: "#245953",
@@ -48,9 +54,13 @@ const GlobalProvider = ({ children }) => {
         modalDispatch({type:'TRANSLATE' ,payload:msr})
   };
 
+
   // ACTIONS FOR POMODORO INPUTS --->
   const saveChange = (theme,timer)=>{
     dispatch({type:'SAVE_CHANGE' ,payload:{theme,timer}})
+  }
+  const headerButtonAction = (minutes)=>{
+    dispatch({type:'SET_TIME',payload:minutes})
   }
 
 
@@ -60,7 +70,7 @@ const GlobalProvider = ({ children }) => {
       value={{ showModal: modalState.showModal ,translateVar:modalState.translateVar, closeModal, openModal ,translateAction}}
     >
       <GlobalContext.Provider
-        value={{ timer: state.timer, theme: state.theme ,saveChange}}
+        value={{ timer: state.timer, theme: state.theme ,saveChange,headerButtonAction,start_time:state.start_time}}
       >
         {children}
       </GlobalContext.Provider>

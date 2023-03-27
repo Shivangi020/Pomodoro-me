@@ -2,9 +2,8 @@ import React, { useContext } from 'react'
 import { GlobalContext } from '../Context/GlobalState'
 
 function TimerWindow(){
-  const {timer} = useContext(GlobalContext)
-  const {pomodoro,short_break,long_break} = timer
-  console.log(pomodoro,short_break,long_break)
+  const {start_time} = useContext(GlobalContext)
+  console.log(start_time)
  
   return (
     <div className='timer-window'>
