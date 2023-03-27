@@ -1,14 +1,17 @@
-import React, { useContext } from 'react'
+import React, { useContext} from 'react'
 import ActionButton from './Button'
 import { GlobalContext } from '../Context/GlobalState'
+import { setTime } from '../Context/Functions'
 
 function HeaderButton() {
-  const {headerButtonAction,timer} = useContext(GlobalContext)
+  const {setCurrentinterval,timer} = useContext(GlobalContext)
   const {pomodoro, short_break, long_break} = timer
 
-
+  
   const createTimerAction = (time) => () => {
-    headerButtonAction(time)
+    const {hours,minutes} = setTime(time)
+    const interval = {hours,minutes}
+    setCurrentinterval(interval)
   }
   return (
     <div className='header-button'>

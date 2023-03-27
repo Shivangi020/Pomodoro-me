@@ -1,4 +1,4 @@
-import { setTime } from "./Functions";
+
 
 
 const AppReducer = (state, action) => {
@@ -13,7 +13,7 @@ const AppReducer = (state, action) => {
       };
 
       case 'SET_TIME':
-        let {hours , minutes} = setTime(action.payload)
+        let {hours , minutes} = action.payload
         return {...state,start_time:{...state.start_time,minutes:minutes,hours:hours}}
     default:
       return { ...state };

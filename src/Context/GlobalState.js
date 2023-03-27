@@ -59,8 +59,10 @@ const GlobalProvider = ({ children }) => {
   const saveChange = (theme,timer)=>{
     dispatch({type:'SAVE_CHANGE' ,payload:{theme,timer}})
   }
-  const headerButtonAction = (minutes)=>{
-    dispatch({type:'SET_TIME',payload:minutes})
+
+ 
+  const setCurrentinterval = (interval)=>{
+    dispatch({type:'SET_TIME',payload:interval})
   }
 
 
@@ -70,7 +72,7 @@ const GlobalProvider = ({ children }) => {
       value={{ showModal: modalState.showModal ,translateVar:modalState.translateVar, closeModal, openModal ,translateAction}}
     >
       <GlobalContext.Provider
-        value={{ timer: state.timer, theme: state.theme ,saveChange,headerButtonAction,start_time:state.start_time}}
+        value={{ timer: state.timer, theme: state.theme ,saveChange,start_time:state.start_time,setCurrentinterval}}
       >
         {children}
       </GlobalContext.Provider>
