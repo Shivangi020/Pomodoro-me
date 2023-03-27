@@ -1,8 +1,8 @@
 import React from 'react'
 
-function ActionButton({tag ,btnAction}) {
+function ActionButton({tag ,btnAction,isActive}) {
   return (
-  <button className='btn' onClick={()=>btnAction()}>{tag}</button>
+  <button className={`${isActive?'btn activeBtn':'btn'}`} onClick={()=>btnAction()} >{tag}</button>
   )
 }
 
