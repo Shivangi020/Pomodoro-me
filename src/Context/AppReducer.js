@@ -12,9 +12,6 @@ const AppReducer = (state, action) => {
         timer: { ...state.timer, pomodoro, short_break, long_break },
       };
 
-      case 'SET_TIME':
-        let {hours , minutes} = action.payload
-        return {...state,start_time:{...state.start_time,minutes:minutes,hours:hours}}
     default:
       return { ...state };
   }

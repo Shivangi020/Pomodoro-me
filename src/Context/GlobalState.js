@@ -10,12 +10,6 @@ const initialState = {
     short_break: 5,
   },
   
-  start_time:{
-      minutes:25,
-      hours:0,
-      second:0
-  },
-
   theme: {
     dark: "#245953",
     light: "#408E91",
@@ -60,10 +54,6 @@ const GlobalProvider = ({ children }) => {
     dispatch({type:'SAVE_CHANGE' ,payload:{theme,timer}})
   }
 
- 
-  const setCurrentinterval = (interval)=>{
-    dispatch({type:'SET_TIME',payload:interval})
-  }
 
 
   
@@ -72,7 +62,7 @@ const GlobalProvider = ({ children }) => {
       value={{ showModal: modalState.showModal ,translateVar:modalState.translateVar, closeModal, openModal ,translateAction}}
     >
       <GlobalContext.Provider
-        value={{ timer: state.timer, theme: state.theme ,saveChange,start_time:state.start_time,setCurrentinterval}}
+        value={{ timer: state.timer, theme: state.theme ,saveChange}}
       >
         {children}
       </GlobalContext.Provider>

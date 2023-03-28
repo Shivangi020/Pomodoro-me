@@ -1,10 +1,10 @@
 import React, { useContext, useState} from 'react'
 import ActionButton from './Button'
 import { GlobalContext } from '../Context/GlobalState'
-import { setTime } from '../Context/Functions'
 
-function HeaderButton() {
-  const {setCurrentinterval,timer} = useContext(GlobalContext)
+
+function HeaderButton({SetTimerByButton}) {
+  const {timer} = useContext(GlobalContext)
   const {pomodoro, short_break, long_break} = timer
   const [activeButtonTag ,setActiveButtonTag] = useState('Pomodoro')
   const HeaderButtonData = [
@@ -13,13 +13,8 @@ function HeaderButton() {
     { tag: 'Long Break', time: long_break },
   ]
   
-
- 
-
   const createTimerAction = (time,tag) => () => {
-    const {hours,minutes} = setTime(time)
-    const interval = {hours,minutes}
-    setCurrentinterval(interval)
+    SetTimerByButton(time)
     setActiveButtonTag(tag)
   }
 
