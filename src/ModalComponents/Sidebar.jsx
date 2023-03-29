@@ -13,7 +13,7 @@ function Sidebar() {
         return {...item , isActive: item.tag === tag  }    
          })
          setOption(activeOption)
-         translateAction(translateMsr)
+     translateAction(translateMsr)
   }
 
   return (

@@ -72,18 +72,7 @@ function Main() {
       SetTimerByButton(pomodoro)
     },[pomodoro, short_break, long_break])
 
-    useEffect(()=>{
-      console.log('a')
-      localStorage.setItem('dark',dark)
-      localStorage.setItem('light',light)
-    },[dark,light])
 
-    useEffect(()=>{
-      console.log('b')
-      localStorage.setItem('pomodoro',pomodoro)
-      localStorage.setItem('short_break',short_break)
-      localStorage.setItem('long_break',long_break)
-    },[pomodoro, short_break, long_break])
   
   return (
     <div className="main">
