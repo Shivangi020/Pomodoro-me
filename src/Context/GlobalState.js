@@ -2,17 +2,24 @@ import React, { createContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
 import ModalReducer from "./ModalReducer";
 
+
+const dark = localStorage.getItem('dark') ? localStorage.getItem('dark') :"#245953"
+const light = localStorage.getItem('light') ? localStorage.getItem('light') :"#408E91"
+const pomodoro = localStorage.getItem('pomodoro') ? JSON.parse(localStorage.getItem('pomodoro')):25
+const long_break = localStorage.getItem('long_break') ? JSON.parse(localStorage.getItem('long_break')):15
+const short_break =localStorage.getItem('short_break') ? JSON.parse(localStorage.getItem('short_break')):5
+
 // INITIAL STATE --->
 const initialState = {
   timer: {
-    pomodoro: 25,
-    long_break: 15,
-    short_break: 5,
+    pomodoro: pomodoro,
+    long_break: long_break,
+    short_break:short_break,
   },
   
   theme: {
-    dark: "#245953",
-    light: "#408E91",
+    dark: dark,
+    light: light,
   },
 };
 

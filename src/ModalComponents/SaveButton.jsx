@@ -15,7 +15,9 @@ function SaveButton({actionState}) {
     const {pomodoro ,short_break,long_break} = timeSelect
     const theme = {dark,light}
     const timer = {pomodoro ,short_break,long_break}
+    console.log(pomodoro,short_break,long_break)
     saveChange(theme,timer)
+
   }
   
   return (

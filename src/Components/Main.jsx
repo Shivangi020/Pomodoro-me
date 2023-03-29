@@ -39,7 +39,7 @@ function Main() {
         } else {
           seconds--;
         }
-        currentTime = `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        currentTime = `${hours<1?'':`${hours}:`}${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         setTimeRun(currentTime)
       }
     }
@@ -70,6 +70,19 @@ function Main() {
 
     useEffect(()=>{
       SetTimerByButton(pomodoro)
+    },[pomodoro, short_break, long_break])
+
+    useEffect(()=>{
+      console.log('a')
+      localStorage.setItem('dark',dark)
+      localStorage.setItem('light',light)
+    },[dark,light])
+
+    useEffect(()=>{
+      console.log('b')
+      localStorage.setItem('pomodoro',pomodoro)
+      localStorage.setItem('short_break',short_break)
+      localStorage.setItem('long_break',long_break)
     },[pomodoro, short_break, long_break])
   
   return (

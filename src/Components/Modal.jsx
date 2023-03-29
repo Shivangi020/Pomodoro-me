@@ -3,17 +3,20 @@ import Cross from "../ModalComponents/Cross";
 import Sidebar from "../ModalComponents/Sidebar";
 import SettingWindow from "../ModalComponents/SettingWindow";
 import { createPortal } from "react-dom";
-import { ModalContext } from "../Context/GlobalState";
+import { ModalContext,GlobalContext } from "../Context/GlobalState";
 import SaveButton from "../ModalComponents/SaveButton";
 
 function Modal() {
   const { showModal } = useContext(ModalContext);
+  const {timer} = useContext(GlobalContext)
+  const {pomodoro, short_break, long_break} = timer
+  const themeIndex = localStorage.getItem('index')?JSON.parse(localStorage.getItem('index')):0
   const [translate,setTranslate] = useState(0)
-  const [themeSelect ,setThemeSelect] = useState(0)
+  const [themeSelect ,setThemeSelect] = useState(themeIndex)
   const [timeSelect ,setTimeSelect] = useState({
-    pomodoro:25,
-    long_break:15,
-    short_break:5
+    pomodoro:pomodoro,
+    long_break:long_break,
+    short_break:short_break
   })
 
   useEffect(()=>{
@@ -25,6 +28,7 @@ function Modal() {
   },[showModal.isModalOpen])
   
   const themeSelectHandler = (index)=>{
+         localStorage.setItem('index',index)
          setThemeSelect(index)
   }
   
