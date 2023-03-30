@@ -14,7 +14,7 @@ function HeaderButton({SetTimerByButton}) {
   ]
   
   const createTimerAction = (time,tag) => () => {
-    SetTimerByButton(time)
+    SetTimerByButton(time,tag)
     setActiveButtonTag(tag)
   }
 

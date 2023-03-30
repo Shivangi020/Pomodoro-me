@@ -14,7 +14,7 @@ function Main() {
     const [timeRun ,setTimeRun] = useState('')
     const [interval,setIntervalRun] = useState({hours:0,minutes:pomodoro,second:0})
     let   [intervalId,setIntervalId] = useState(null)
-    
+    const [timerActive ,setTimerActive] = useState("Pomodoro")
 
     function StartTimer(hr,min) {
       let hours = hr;
@@ -44,14 +44,16 @@ function Main() {
       }
     }
     
-    function SetTimerByButton(min){
+    function SetTimerByButton(min,tag){
       if(intervalId){
         clearInterval(intervalId)
         setIntervalId(null)
       }
+
        const {hours,minutes,second} = setTime(min)
        setIntervalRun({...interval,hours,minutes,second})
        setTimeRun(`${hours<1?'':`${hours}:`}${minutes.toString().padStart(2, '0')}:${second.toString().padStart(2, '0')}`)
+       setTimerActive(tag)
        intervalId = null; 
      }
 
@@ -81,11 +83,24 @@ function Main() {
       clearInterval(intervalId)
       setIntervalId(null)
     }
-     const {hours,minutes,second} = setTime(pomodoro)
-     setIntervalRun({...interval,hours,minutes,second})
-     setTimeRun(`${hours<1?'':`${hours}:`}${minutes.toString().padStart(2, '0')}:${second.toString().padStart(2, '0')}`)
+    if(timerActive==='Pomodoro'){
+      const {hours,minutes,second} = setTime(pomodoro)
+      setIntervalRun({...interval,hours,minutes,second})
+      setTimeRun(`${hours<1?'':`${hours}:`}${minutes.toString().padStart(2, '0')}:${second.toString().padStart(2, '0')}`)
+    }else if(timerActive==='Short Break'){
+      const {hours,minutes,second} = setTime(short_break)
+      setIntervalRun({...interval,hours,minutes,second})
+      setTimeRun(`${hours<1?'':`${hours}:`}${minutes.toString().padStart(2, '0')}:${second.toString().padStart(2, '0')}`)
+    }else{
+      const {hours,minutes,second} = setTime(long_break)
+      setIntervalRun({...interval,hours,minutes,second})
+      setTimeRun(`${hours<1?'':`${hours}:`}${minutes.toString().padStart(2, '0')}:${second.toString().padStart(2, '0')}`)
+    }
+ 
+   
+   
      intervalId = null; 
-  },[])
+  },[pomodoro,short_break,long_break])
     
     
   

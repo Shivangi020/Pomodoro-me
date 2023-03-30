@@ -21,7 +21,7 @@ function SaveButton({actionState}) {
     localStorage.setItem('dark',dark)
     localStorage.setItem('light',light)
     saveChange(theme,timer)
-    SetTimerByButton(pomodoro )
+    // SetTimerByButton(pomodoro )
   }
   
   return (
