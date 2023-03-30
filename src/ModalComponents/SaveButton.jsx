@@ -4,7 +4,7 @@ import { GlobalContext,ModalContext } from '../Context/GlobalState'
 import { Themes } from '../Theme'
 
 function SaveButton({actionState}) {
-  const {themeSelect,timeSelect} = actionState
+  const {themeSelect,timeSelect,SetTimerByButton} = actionState
   const {saveChange} = useContext(GlobalContext)
   const {closeModal} = useContext(ModalContext)
 
@@ -21,7 +21,7 @@ function SaveButton({actionState}) {
     localStorage.setItem('dark',dark)
     localStorage.setItem('light',light)
     saveChange(theme,timer)
-
+    SetTimerByButton(pomodoro )
   }
   
   return (

@@ -3,11 +3,11 @@ import AppReducer from "./AppReducer";
 import ModalReducer from "./ModalReducer";
 
 
-const dark = localStorage.getItem('dark') ? localStorage.getItem('dark') :"#245953"
-const light = localStorage.getItem('light') ? localStorage.getItem('light') :"#408E91"
-const pomodoro = localStorage.getItem('pomodoro') ? JSON.parse(localStorage.getItem('pomodoro')):25
-const long_break = localStorage.getItem('long_break') ? JSON.parse(localStorage.getItem('long_break')):15
-const short_break =localStorage.getItem('short_break') ? JSON.parse(localStorage.getItem('short_break')):5
+const dark = localStorage.getItem('dark') || "#245953"
+const light = localStorage.getItem('light') || "#408E91"
+const pomodoro = localStorage.getItem('pomodoro') || 25
+const long_break = localStorage.getItem('long_break') || 15
+const short_break =localStorage.getItem('short_break') || 5
 
 // INITIAL STATE --->
 const initialState = {

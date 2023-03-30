@@ -7,12 +7,13 @@ function ThemeSetting({themeSelectHandler}) {
     const [showList ,setShowList] = useState(false)
     const {translateVar} = useContext(ModalContext)
     const {measurement} = translateVar
+    // const [themeList ,setThe]
 
 
   return (
     <div className='theme-setting-cn' style={{transform: `translateY(${0-measurement}px)`,transition:'transform .3s ease-out'}}>
         <p>Select theme color :</p>
-        <div className='theme-in-cn'>  <input className='theme-in' ></input><span className='down-icon' onClick={()=>setShowList(!showList)} ><BiChevronDown /></span></div>
+        <div className='theme-in-cn'>  <input className='theme-in'></input><span className='down-icon' onClick={()=>setShowList(!showList)} ><BiChevronDown /></span></div>
       <ul className={`${showList?'theme-list theme-list-show' :'theme-list '}`}>
        {
         Themes.map((theme)=>{

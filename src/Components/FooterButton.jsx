@@ -5,7 +5,7 @@ import { ModalContext } from '../Context/GlobalState'
 
 
 
-function FooterButton({StartTimer,interval,StopTimer}) {
+function FooterButton({StartTimer,interval,StopTimer,ResetTimer}) {
   const {openModal} = useContext(ModalContext)
   const {hours,minutes} = interval
 
@@ -13,14 +13,17 @@ function FooterButton({StartTimer,interval,StopTimer}) {
       StartTimer(hours,minutes)
  }
 
-
+const ResetTimerAction = ()=>{
+  console.log(hours,minutes)
+  ResetTimer(hours,minutes)
+}
 
   
   return (
     <div className='footer-button' >
     <ActionButton tag='Start' btnAction={timerAction}/>
     <ActionButton tag='Pause' btnAction={StopTimer}/>
-    <ActionButton tag='Reset'/>
+    <ActionButton tag='Reset' btnAction={ResetTimerAction} />
     <AiFillSetting className='setting-btn' onClick={()=>openModal()}/>
 </div>
   )

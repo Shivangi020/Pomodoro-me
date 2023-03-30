@@ -6,7 +6,7 @@ import { createPortal } from "react-dom";
 import { ModalContext,GlobalContext } from "../Context/GlobalState";
 import SaveButton from "../ModalComponents/SaveButton";
 
-function Modal() {
+function Modal({SetTimerByButton}) {
   const { showModal } = useContext(ModalContext);
   const {timer} = useContext(GlobalContext)
   const {pomodoro, short_break, long_break} = timer
@@ -68,7 +68,7 @@ function Modal() {
             <Sidebar />
             <SettingWindow actionState = {{themeSelectHandler,pomodorTimeHandler,shortTimeHandler,longTimeHandler,timeSelect}}/>
           </div>
-          <SaveButton actionState = {{themeSelect,timeSelect}} />
+          <SaveButton actionState = {{themeSelect,timeSelect,SetTimerByButton}} />
         </div>
       </div>,
       document.body

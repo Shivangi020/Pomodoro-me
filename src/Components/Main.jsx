@@ -12,8 +12,8 @@ function Main() {
     const {dark,light} = theme
     const {pomodoro, short_break, long_break} = timer
     const [timeRun ,setTimeRun] = useState('')
-    const [interval,setIntervalRun] = useState({hours:0,minutes:25,second:0})
-    let [intervalId,setIntervalId] = useState(null)
+    const [interval,setIntervalRun] = useState({hours:0,minutes:pomodoro,second:0})
+    let   [intervalId,setIntervalId] = useState(null)
     
 
     function StartTimer(hr,min) {
@@ -62,26 +62,41 @@ function Main() {
         setIntervalId(null)
       }
     } 
+
+    const ResetTimer = (hours,min)=>{
+     StopTimer()
+     setIntervalRun({...interval,hours:hours,min:min})
+     setTimeRun(`${hours<1?'':`${hours}:`}${min.toString().padStart(2, '0')}:${'00'}`)
+    }
+
     useEffect(()=>{
       const root = document.documentElement;
       root.style.setProperty('--dark', dark);
       root.style.setProperty('--light', light);
     },[dark,light])
 
-    useEffect(()=>{
-      SetTimerByButton(pomodoro)
-    },[pomodoro, short_break, long_break])
 
-
+  useEffect(()=>{
+    if(intervalId){
+      clearInterval(intervalId)
+      setIntervalId(null)
+    }
+     const {hours,minutes,second} = setTime(pomodoro)
+     setIntervalRun({...interval,hours,minutes,second})
+     setTimeRun(`${hours<1?'':`${hours}:`}${minutes.toString().padStart(2, '0')}:${second.toString().padStart(2, '0')}`)
+     intervalId = null; 
+  },[])
+    
+    
   
   return (
     <div className="main">
     <Header />
     <div className="container">
       <HeaderButton SetTimerByButton={SetTimerByButton}/>
-      <TimerWindow  timeRun={timeRun}/>
-      <FooterButton StartTimer={StartTimer} interval={interval} StopTimer={StopTimer}/>
-      <Modal/>
+      <TimerWindow  timeRun={timeRun} interval={interval} />
+      <FooterButton StartTimer={StartTimer} interval={interval} StopTimer={StopTimer} ResetTimer={ResetTimer}/>
+      <Modal SetTimerByButton={SetTimerByButton}/>
     </div>
   </div>
   )
