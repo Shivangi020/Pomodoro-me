@@ -88,10 +88,15 @@ body {
   color: var(--dark);
 }
 
-.setting-btn{
+.setting-btn,.reset-btn{
   font-size: 2.5em;
   color: var(--dark);
   cursor: pointer;
+  margin-right: 20px;
+}
+
+.reset-btn{
+  font-size: 2.2em;
 }
 
 .timer-window{

@@ -1,17 +1,29 @@
-import React, { useContext} from 'react'
+import React, { useContext, useEffect, useState} from 'react'
 import ActionButton from './Button'
 import {AiFillSetting} from 'react-icons/ai'
 import { ModalContext } from '../Context/GlobalState'
-
+import {FaRedo} from 'react-icons/fa'
 
 
 function FooterButton({StartTimer,interval,StopTimer,ResetTimer}) {
   const {openModal} = useContext(ModalContext)
   const {hours,minutes} = interval
-
- const timerAction = ()=>{
+  const [btntag ,setBtntag] = useState('Start')
+ 
+  const timerAction = ()=>{
+    if(btntag ==='Start'){
       StartTimer(hours,minutes)
+      setBtntag('Pause')
+    }else if(btntag ==='Pause'){
+    StopTimer()
+    setBtntag('Start')
+    }
  }
+
+ useEffect(()=>{
+  console.log('c')
+  setBtntag('Start')
+ },[hours,minutes])
 
 const ResetTimerAction = ()=>{
   console.log(hours,minutes)
@@ -21,9 +33,8 @@ const ResetTimerAction = ()=>{
   
   return (
     <div className='footer-button' >
-    <ActionButton tag='Start' btnAction={timerAction}/>
-    <ActionButton tag='Pause' btnAction={StopTimer}/>
-    <ActionButton tag='Reset' btnAction={ResetTimerAction} />
+    <ActionButton tag={btntag} btnAction={timerAction}/>
+    <FaRedo className='reset-btn' onClick={ResetTimerAction}/>
     <AiFillSetting className='setting-btn' onClick={()=>openModal()}/>
 </div>
   )

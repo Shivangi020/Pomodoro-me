@@ -15,8 +15,11 @@ function Main() {
     const [interval,setIntervalRun] = useState({hours:0,minutes:pomodoro,second:0})
     let   [intervalId,setIntervalId] = useState(null)
     const [timerActive ,setTimerActive] = useState("Pomodoro")
+  
 
     function StartTimer(hr,min) {
+      console.log('start')
+      console.log(intervalId)
       let hours = hr;
       let minutes = min;
       let seconds = 0;
@@ -44,7 +47,10 @@ function Main() {
       }
     }
     
+
+  
     function SetTimerByButton(min,tag){
+      console.log('timer button')
       if(intervalId){
         clearInterval(intervalId)
         setIntervalId(null)
@@ -54,24 +60,28 @@ function Main() {
        setIntervalRun({...interval,hours,minutes,second})
        setTimeRun(`${hours<1?'':`${hours}:`}${minutes.toString().padStart(2, '0')}:${second.toString().padStart(2, '0')}`)
        setTimerActive(tag)
-       intervalId = null; 
      }
 
 
     const StopTimer = ()=>{
+      console.log('stop')
+     console.log(intervalId)
       if(intervalId){
+        console.log(intervalId)
         clearInterval(intervalId)
         setIntervalId(null)
       }
     } 
 
     const ResetTimer = (hours,min)=>{
+     console.log('reset')
      StopTimer()
      setIntervalRun({...interval,hours:hours,min:min})
      setTimeRun(`${hours<1?'':`${hours}:`}${min.toString().padStart(2, '0')}:${'00'}`)
     }
 
     useEffect(()=>{
+      console.log('change theme')
       const root = document.documentElement;
       root.style.setProperty('--dark', dark);
       root.style.setProperty('--light', light);
@@ -79,6 +89,7 @@ function Main() {
 
 
   useEffect(()=>{
+    console.log('save changes')
     if(intervalId){
       clearInterval(intervalId)
       setIntervalId(null)
@@ -97,9 +108,6 @@ function Main() {
       setTimeRun(`${hours<1?'':`${hours}:`}${minutes.toString().padStart(2, '0')}:${second.toString().padStart(2, '0')}`)
     }
  
-   
-   
-     intervalId = null; 
   },[pomodoro,short_break,long_break])
     
     
