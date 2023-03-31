@@ -23,7 +23,7 @@ function ThemeSetting({themeSelectHandler}) {
   return (
     <div className='theme-setting-cn' style={{transform: `translateY(${0-measurement}px)`,transition:'transform .3s ease-out'}}>
         <p>Select theme color :</p>
-        <div className='theme-in-cn'>  <input className='theme-in' value={searchInput} placeholder='Spring' onChange={(e)=>searchableInput(e)} onClick={()=>setShowList(!showList)}></input><span className='down-icon' onClick={()=>setShowList(!showList)} ><BiChevronDown /></span></div>
+        <div className='theme-in-cn'>  <input className='theme-in' value={searchInput} placeholder='Spring' onChange={(e)=>searchableInput(e)} onClick={()=>setShowList(true)}></input><span className='down-icon' onClick={()=>setShowList(!showList)} ><BiChevronDown /></span></div>
       <ul className={`${showList?'theme-list theme-list-show' :'theme-list '}`}>
        {
         Themes.filter((item)=>{

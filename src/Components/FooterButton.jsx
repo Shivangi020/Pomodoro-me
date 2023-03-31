@@ -28,6 +28,7 @@ function FooterButton({StartTimer,interval,StopTimer,ResetTimer}) {
 const ResetTimerAction = ()=>{
   console.log(hours,minutes)
   ResetTimer(hours,minutes)
+  setBtntag('Start')
 }
 
   
