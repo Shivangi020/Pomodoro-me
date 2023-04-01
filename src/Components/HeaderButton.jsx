@@ -7,6 +7,7 @@ function HeaderButton({SetTimerByButton}) {
   const {timer} = useContext(GlobalContext)
   const {pomodoro, short_break, long_break} = timer
   const [activeButtonTag ,setActiveButtonTag] = useState('Pomodoro')
+  
   const HeaderButtonData = [
     { tag: 'Pomodoro', time: pomodoro },
     { tag: 'Short Break', time: short_break },

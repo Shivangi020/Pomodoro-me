@@ -33,11 +33,12 @@ const ResetTimerAction = ()=>{
   setResetAnm(true)
 }
 
+
   
   return (
     <div className='footer-button' >
-    <ActionButton tag={btntag} btnAction={timerAction}/>
-    <FaRedo className={`${resetAnm?'reset-btn reset-btn-anm':'reset-btn'}`} onClick={ResetTimerAction}/>
+    <ActionButton tag={btntag} btnAction={timerAction} styleClass='btn-hover start-btn'/>
+    <FaRedo className={`${resetAnm?'reset-btn reset-btn-anm':'reset-btn'}`} onClick={ResetTimerAction} />
     <AiFillSetting className='setting-btn' onClick={()=>openModal()}/>
 </div>
   )

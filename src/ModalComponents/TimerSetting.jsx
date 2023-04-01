@@ -23,6 +23,7 @@ function TimerSetting({
       <div className="timer-in">
         <label>Pomodoro :</label>
         <input
+          name='pomodoro'
           type="number"
           min="10"
           max="120"
@@ -33,6 +34,7 @@ function TimerSetting({
       <div className="timer-in">
         <label>Short Break :</label>
         <input
+        name="short_break"
           type="number"
           min="5"
           max="15"
@@ -43,6 +45,7 @@ function TimerSetting({
       <div className="timer-in">
         <label>Long Break :</label>
         <input
+        name='long_break'
           type="number"
           min="15"
           max="30"

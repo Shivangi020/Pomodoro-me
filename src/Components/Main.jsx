@@ -62,38 +62,25 @@ function Main() {
       setIntervalId(null)
     }
    }
-   
-    function SetTimerByButton(min,tag){
-      console.log('timer button')
-      if(intervalId){
-        clearInterval(intervalId)
-        setIntervalId(null)
-      }
 
-       const {hours,minutes,second} = setTime(min)
-       setIntervalRun({...interval,hours,minutes,second})
-       setTimeRun(`${hours<1?'':`${hours}:`}${minutes.toString().padStart(2, '0')}:${second.toString().padStart(2, '0')}`)
+    function SetTimerByButton(min,tag){
+       clearTimer()
+       setTimer(min)
        setTimerActive(tag)
      }
 
 
     const StopTimer = ()=>{
-      console.log('stop')
-     console.log(intervalId)
-      if(intervalId){
-        console.log(intervalId)
-        clearInterval(intervalId)
-        setIntervalId(null)
-      }
+          clearTimer()
     } 
 
     const ResetTimer = (hours,min)=>{
-     console.log('reset')
-     StopTimer()
+     clearTimer()
      setIntervalRun({...interval,hours:hours,min:min})
      setTimeRun(`${hours<1?'':`${hours}:`}${min.toString().padStart(2, '0')}:${'00'}`)
     }
 
+// This useEffect will run everytime user changes theme
     useEffect(()=>{
       console.log('change theme')
       const root = document.documentElement;
@@ -102,7 +89,7 @@ function Main() {
     },[dark,light])
 
 
-// This useEffect will run everytime user sets the new interval for pomodoro , short break or long break
+// This useEffect will run everytime user sets the new interval for pomodoro , short break or long break with condition which timer active
   useEffect(()=>{
     console.log('save changes')
     if(intervalId){
@@ -127,7 +114,7 @@ function Main() {
       <HeaderButton SetTimerByButton={SetTimerByButton}/>
       <TimerWindow  timeRun={timeRun} interval={interval} />
       <FooterButton StartTimer={StartTimer} interval={interval} StopTimer={StopTimer} ResetTimer={ResetTimer}/>
-      <Modal SetTimerByButton={SetTimerByButton}/>
+      <Modal />
     </div>
   </div>
   )
