@@ -9,8 +9,12 @@ import { setTime } from '../Context/Functions'
 
 function Main() {
     const {theme,timer} = useContext(GlobalContext)
+    
+    // Destructuring theme and timer from Global State
     const {dark,light} = theme
     const {pomodoro, short_break, long_break} = timer
+
+    // timeRun will render on timer window
     const [timeRun ,setTimeRun] = useState('')
     const [interval,setIntervalRun] = useState({hours:0,minutes:pomodoro,second:0})
     let   [intervalId,setIntervalId] = useState(null)
@@ -19,12 +23,11 @@ function Main() {
 
     function StartTimer(hr,min) {
       console.log('start')
-      console.log(intervalId)
       let hours = hr;
       let minutes = min;
       let seconds = 0;
-      intervalId = setInterval(frame, 1000);
-      setIntervalId(intervalId)
+      const Id = setInterval(frame, 1000);
+      setIntervalId(Id)
       let currentTime = ``
       function frame() {
         if (seconds === 0) {
@@ -47,8 +50,19 @@ function Main() {
       }
     }
     
-
+   function setTimer(timer){
+    const {hours,minutes,second} = setTime(timer)
+    setIntervalRun({...interval,hours,minutes,second})
+    setTimeRun(`${hours<1?'':`${hours}:`}${minutes.toString().padStart(2, '0')}:${second.toString().padStart(2, '0')}`)
+   }
   
+   function clearTimer(){
+    if(intervalId){
+      clearInterval(intervalId)
+      setIntervalId(null)
+    }
+   }
+   
     function SetTimerByButton(min,tag){
       console.log('timer button')
       if(intervalId){
@@ -88,6 +102,7 @@ function Main() {
     },[dark,light])
 
 
+// This useEffect will run everytime user sets the new interval for pomodoro , short break or long break
   useEffect(()=>{
     console.log('save changes')
     if(intervalId){
@@ -95,19 +110,12 @@ function Main() {
       setIntervalId(null)
     }
     if(timerActive==='Pomodoro'){
-      const {hours,minutes,second} = setTime(pomodoro)
-      setIntervalRun({...interval,hours,minutes,second})
-      setTimeRun(`${hours<1?'':`${hours}:`}${minutes.toString().padStart(2, '0')}:${second.toString().padStart(2, '0')}`)
+      setTimer(pomodoro)
     }else if(timerActive==='Short Break'){
-      const {hours,minutes,second} = setTime(short_break)
-      setIntervalRun({...interval,hours,minutes,second})
-      setTimeRun(`${hours<1?'':`${hours}:`}${minutes.toString().padStart(2, '0')}:${second.toString().padStart(2, '0')}`)
+        setTimer(short_break)
     }else{
-      const {hours,minutes,second} = setTime(long_break)
-      setIntervalRun({...interval,hours,minutes,second})
-      setTimeRun(`${hours<1?'':`${hours}:`}${minutes.toString().padStart(2, '0')}:${second.toString().padStart(2, '0')}`)
+      setTimer(long_break)
     }
- 
   },[pomodoro,short_break,long_break])
     
     

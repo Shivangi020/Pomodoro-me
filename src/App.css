@@ -97,8 +97,12 @@ body {
 
 .reset-btn{
   font-size: 2.2em;
+  transition: all 0.75s;
 }
 
+.reset-btn-anm{
+  transform: rotate(360deg);
+}
 .timer-window{
 background-color: #fff;
 width: 620px;

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 
 
 function TimerWindow({timeRun,interval}){
-
   const {hours,minutes,second} = interval
 
   
